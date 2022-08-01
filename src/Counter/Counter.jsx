@@ -3,9 +3,9 @@ import { useState } from "react";
 import { data } from "../Assets/data";
 
 const Counter = () => {
-  const [count, setCount] = useState([0]);
+  const [count, setCount] = useState(0);
   let advice= data[count]
- const increase =()=> setCount(advice.id ++)
+ const increase =()=> setCount(count +1)
  const decrease =()=> setCount(count - 1)
   return (
     <div className={"container"}>
@@ -18,11 +18,11 @@ const Counter = () => {
       </div>
 
       <div className={"card__actions"}>
-        <button  onClick={decrease} className={"btn--previous"}>
+        <button disabled={count === 0 ? true : false} onClick={decrease} className={"btn--previous"}>
           Previous
         </button>
 
-        <button onClick={increase} className={"btn--next"}>
+        <button  disabled={count >= data.length - 1} onClick={increase} className={"btn--next"}>
           Next
         </button>
       </div>
